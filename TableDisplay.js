@@ -1,3 +1,5 @@
+import { Inventory } from "./Inventory.js";
+
 const inventory = new Inventory();
 const productForm = document.getElementById("product-form");
 const inventoryTableBody = document.getElementById("inventory-table-body");
