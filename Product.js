@@ -27,12 +27,12 @@ export default class Product {
   }
 
   calculateHealth() {
-    const diff_days = this.calculateDaysRemaining() - this.lead_time;
+    const diff_days = this.calculateDaysRemaining();
 
     // if > lead_time, "HEALTHY"; if < lead_time && > (20% lead_time); if < (20% lead_time)
     if (diff_days > this.lead_time) {
       return "HEALTHY";
-    } else if (diff_days < this.lead_time) {
+    } else if (diff_days < this.lead_time && diff_days > (this.lead_time * 0.2)) {
       return "LOW";
     } else {
       return "CRITICAL";
