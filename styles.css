@@ -1,5 +1,5 @@
 body {
-    font-family: Ariel, sans-serif;
+    font-family: Arial, sans-serif;
     background-color: antiquewhite;
     margin: 0;
     padding: 0;
@@ -46,7 +46,7 @@ section {
     margin-bottom: 40px;
 }
 
-#contact form {
+#inputs form {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -55,18 +55,18 @@ section {
     align-items: center;
 }
 
-#contact label {
+#inputs label {
     font-weight: bold;
 }
 
-#contact input, textarea {
+#inputs input {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     min-width: 400px;
 }
 
-#contact button {
+#inputs button {
     background-color: #3498db;
     color: white;
     border: none;
@@ -74,6 +74,41 @@ section {
     width: 80px;
     height: 40px;
     cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    max-width: 900px;
+    width: 100%;
+    background-color: white;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: teal;
+    color: white;
+}
+
+.status-healthy {
+    color: green;
+    font-weight: bold;
+}
+
+.status-low {
+    color: #b36b00;
+    font-weight: bold;
+}
+
+.status-critical {
+    color: crimson;
+    font-weight: bold;
 }
 
 footer {
