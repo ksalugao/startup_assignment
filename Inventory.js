@@ -1,4 +1,4 @@
-export class Inventory {
+export default class Inventory {
     constructor(products = []) {
         this.products = products; // Array of Product objects
     }

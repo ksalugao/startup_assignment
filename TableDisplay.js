@@ -1,4 +1,5 @@
-import { Inventory } from "./Inventory.js";
+import Inventory from "./Inventory.js";
+import Product from "./Product.js";
 
 const inventory = new Inventory();
 const productForm = document.getElementById("product-form");
@@ -43,14 +44,13 @@ function renderInventoryTable() {
     }
 
     products.forEach(product => {
-        const status = product.getInventoryStatus();
         const row = document.createElement("tr");
 
-        row.appendChild(createTableCell(product.name));
-        row.appendChild(createTableCell(formatDaysRemaining(product.getDaysRemainingBeforeStockout())));
+        row.appendChild(createTableCell(product.getName()));
+        row.appendChild(createTableCell(formatDaysRemaining(product.calculateDaysRemaining())));
         row.appendChild(createTableCell(product.needsReorder() ? "Reorder now" : "No warning"));
-        row.appendChild(createTableCell(status, `status-${status}`));
-
+        // status here
+        
         inventoryTableBody.appendChild(row);
     });
 }
@@ -60,9 +60,9 @@ productForm.addEventListener("submit", event => {
 
     const product = new Product(
         productForm.elements.name.value,
-        Number(productForm.elements.inventory.value),
-        Number(productForm.elements.sales.value),
-        Number(productForm.elements.days.value)
+        Number(productForm.elements.quantity.value),
+        Number(productForm.elements.days.value),
+        Number(productForm.elements.sales.value)
     );
 
     inventory.addProduct(product);
