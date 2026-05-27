@@ -49,7 +49,8 @@ function renderInventoryTable() {
         row.appendChild(createTableCell(product.getName()));
         row.appendChild(createTableCell(formatDaysRemaining(product.calculateDaysRemaining())));
         row.appendChild(createTableCell(product.needsReorder() ? "Reorder now" : "No warning"));
-        row.appendChild(createTableCell(product.calculateStatus()));
+        row.appendChild(createTableCell(product.calculateHealth()));
+        row.appendChild(createTableCell(product.getQuantity()));
         
         inventoryTableBody.appendChild(row);
     });

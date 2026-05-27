@@ -2,31 +2,40 @@ export default class Product {
   constructor(name, quantity, lead_time, average_sales) {
     this.name = name;
     this.quantity = quantity;
-    this.lead_time = lead_time;
     this.average_sales = average_sales;
-    this.status = "HEALTHY";
+    this.lead_time = lead_time;
+  }
+
+  getName() {
+    return this.name;
   }
 
   getQuantity() {
     return this.quantity;
   }
+
   addQuantity(quantity) {
     this.quantity += quantity;
-    this.calculateReorder();
   }
+
+  needsReorder() {
+    return this.calculateDaysRemaining() <= this.lead_time;
+  }
+
   calculateDaysRemaining() {
     return Math.floor(this.quantity / this.average_sales);
   }
-  calculateStatus() {
+
+  calculateHealth() {
     const diff_days = this.calculateDaysRemaining() - this.lead_time;
 
     // if > lead_time, "HEALTHY"; if < lead_time && > (20% lead_time); if < (20% lead_time)
     if (diff_days > this.lead_time) {
-      this.status = "HEALTHY";
+      return "HEALTHY";
     } else if (diff_days < this.lead_time) {
-      this.status = "LOW";
+      return "LOW";
     } else {
-      this.status = "CRITICAL";
+      return "CRITICAL";
     }
   }
 }
