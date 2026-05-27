@@ -31,6 +31,6 @@ export default class Product {
     }
 
     calculateStatus() {
-        this.reorder = this.calculateDaysRemaining() <= this.lead_time; 
+        return "healthy";
     }
 }
